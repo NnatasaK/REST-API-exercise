@@ -6,26 +6,49 @@ const productRoute = require('./routes/productRoute')
 const bodyParser = require('body-parser')
 const errorMiddleware = require('./middleware/errorMiddleware')
 const Product = require('./models/productModel')
-
+const { name } = require('ejs')
+const { getProducts } = require('./controller/productController')
 const app = express()
 
 const MONGO_URL = process.env.MONGO_URL
 const PORT = process.env.PORT || 3000
-
+app.use(express.static('./public'))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(bodyParser.json())
+app.set("view engine", "ejs")
+/* const cors = require('cors');
 
 
+const whitelist = ['http://localhost:3000']; // assuming front-end application is running on localhost port 3000
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}
+
+app.use(cors(corsOptions)); */
 //routes
 
 app.use('/api/products', productRoute);
 app.use(errorMiddleware);
 
-app.get('/', (req, res) => {
-    res.send('helloooo node api');
-})
 
+
+
+app.get('/', async (req, res) => {
+    await Product.find({}, (products) => {
+        res.render('pages/index', {
+            productList: products
+        });
+    })
+
+});
 
 app.get('/keyword', async (req, res) => {
     try {
