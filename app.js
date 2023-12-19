@@ -1,67 +1,48 @@
+// Middleware
+
 require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const productRoute = require('./routes/productRoute')
-/* const queryString = require('query-string') */
 const bodyParser = require('body-parser')
 const errorMiddleware = require('./middleware/errorMiddleware')
 const Product = require('./models/productModel')
 const { name } = require('ejs')
 const { getProducts } = require('./controller/productController')
 const app = express()
+const cors = require('cors');
 
 const MONGO_URL = process.env.MONGO_URL
 const PORT = process.env.PORT || 3000
-app.use(express.static('./public'))
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.json())
-app.use(bodyParser.json())
-app.set("view engine", "ejs")
-/* fetch('./test.products.json')
-    .then((res) => res.json()).then((json) => ); */
 
-
-/* const cors = require('cors');
-
-
-const whitelist = ['http://localhost:3000']; // assuming front-end application is running on localhost port 3000
-
+// example for later ( can put multiple options ), save address in env files instead
 const corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
+    origin: 'http://127.0.0.1:5500',
+    optionSuccessStatus: 200
 }
 
-app.use(cors(corsOptions)); */
-//routes
 
+// Apply all middleware
+
+app.use(express.static('./public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(bodyParser.json());
+app.set("view engine", "ejs");
+app.use(cors(corsOptions));
 app.use('/api/products', productRoute);
 app.use(errorMiddleware);
 
 
 
 
-/* app.get('/render', async (req, res) => {
-    res.render('pages/index',
-        { productList }) */
-/*  await productList.find({}, (products) => {
-     res.render('pages/index', {
-         products: productList
-     })
- })) */
+// Search name based on a keyword 
+//(note: other routes are refactored an exported, this one worked only like this -- look into it later!)
 
-
-//});
-
-app.get('/keyword', async (req, res) => {
+/* app.get('/keyword', async (req, res) => {
     try {
         const keyword = req.query.name;
 
-        // Use a regular expression to perform a case-insensitive search
         const products = await Product.find({ name: { $regex: new RegExp(keyword, 'i') } });
 
         res.json(products);
@@ -70,7 +51,34 @@ app.get('/keyword', async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 });
+ */
 
+
+
+
+// Gives only a number of products but not the content ???
+
+app.get('/keyword', async (req, res) => {
+
+    try {
+        const request = req.query;
+        if (request.name) {
+            const filteredByName = await Product.find({ "name": request.name })
+            res.json(filteredByName)
+        } else {
+            const filteredByPrice = await Product.find({ "price": parseInt(request.price) })
+
+            res.json(filteredByPrice)
+        }
+
+
+    } catch (error) {
+        res.status(500);
+        throw new Error(error.message);
+    }
+})
+
+// Connect to the database
 
 mongoose.connect(MONGO_URL)
     .then(() => {
