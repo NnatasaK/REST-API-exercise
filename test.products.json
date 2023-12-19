@@ -1,0 +1,157 @@
+[{
+  "_id": {
+    "$oid": "65798f5789b1cffa714b77d3"
+  },
+  "name": "name name name name",
+  "quantity": 5,
+  "price": 5,
+  "createdAt": {
+    "$date": "2023-12-13T11:02:47.286Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-13T13:52:48.715Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65798f5f89b1cffa714b77d5"
+  },
+  "name": "name3",
+  "quantity": 5,
+  "price": 5,
+  "createdAt": {
+    "$date": "2023-12-13T11:02:55.687Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-13T11:02:55.687Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6579e103dfd33dc331f97e45"
+  },
+  "name": "name name name name",
+  "quantity": 5,
+  "price": 5,
+  "createdAt": {
+    "$date": "2023-12-13T16:51:15.901Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-13T16:51:15.901Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6579e2562f5dd2e05d2ec8c8"
+  },
+  "name": "dress",
+  "quantity": 5,
+  "price": 5,
+  "description": "something",
+  "createdAt": {
+    "$date": "2023-12-13T16:56:54.455Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-13T16:56:54.455Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6579e61eac52af7a7a0e9a93"
+  },
+  "name": "skirt",
+  "quantity": 5,
+  "price": 5,
+  "description": "something",
+  "createdAt": {
+    "$date": "2023-12-13T17:13:02.495Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-13T17:13:33.492Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657ac9ae83482a59efd30874"
+  },
+  "name": "name",
+  "quantity": 5,
+  "price": 5,
+  "description": "something",
+  "createdAt": {
+    "$date": "2023-12-14T09:23:58.807Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-14T09:23:58.807Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657af43477162ac5c1eec124"
+  },
+  "name": "name",
+  "quantity": 5,
+  "price": 5,
+  "description": "something",
+  "createdAt": {
+    "$date": "2023-12-14T12:25:24.631Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-14T12:25:24.631Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657af44677162ac5c1eec126"
+  },
+  "name": "heloooo",
+  "quantity": 5,
+  "price": 5,
+  "description": "something",
+  "createdAt": {
+    "$date": "2023-12-14T12:25:42.610Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-14T12:25:42.610Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657b0e1b4ce36be75765e511"
+  },
+  "name": "name3",
+  "quantity": 5,
+  "price": 5,
+  "description": "something",
+  "createdAt": {
+    "$date": "2023-12-14T14:15:55.642Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-14T14:15:55.642Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "657cfdd6783736c52593aa84"
+  },
+  "name": "name",
+  "quantity": 5,
+  "price": 5,
+  "description": "something",
+  "createdAt": {
+    "$date": "2023-12-16T01:31:02.626Z"
+  },
+  "updatedAt": {
+    "$date": "2023-12-16T01:31:02.626Z"
+  },
+  "__v": 0
+}]

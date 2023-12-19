@@ -17,6 +17,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(bodyParser.json())
 app.set("view engine", "ejs")
+/* fetch('./test.products.json')
+    .then((res) => res.json()).then((json) => ); */
+
+
 /* const cors = require('cors');
 
 
@@ -41,14 +45,17 @@ app.use(errorMiddleware);
 
 
 
-app.get('/', async (req, res) => {
-    await Product.find({}, (products) => {
-        res.render('pages/index', {
-            productList: products
-        });
-    })
+/* app.get('/render', async (req, res) => {
+    res.render('pages/index',
+        { productList }) */
+/*  await productList.find({}, (products) => {
+     res.render('pages/index', {
+         products: productList
+     })
+ })) */
 
-});
+
+//});
 
 app.get('/keyword', async (req, res) => {
     try {

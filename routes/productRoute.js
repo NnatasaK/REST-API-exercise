@@ -1,6 +1,6 @@
 const express = require('express');
 const Product = require('../models/productModel');
-const { getProducts, getProduct, createProduct, updateProduct, deleteProduct, keywordSearch } = require('../controller/productController');
+const { getProducts, getProduct, createProduct, updateProduct, deleteProduct, renderPage, updateProducts, deleteProducts } = require('../controller/productController');
 const { query } = require('express');
 
 const router = express.Router();
@@ -8,27 +8,22 @@ const router = express.Router();
 
 
 router.get('/', getProducts)
+router.get('/render', renderPage)
 router.get('/:id', getProduct)
 
 router.post('/', createProduct)
 
 router.put('/:id', updateProduct)
 
+// use $set to update or $unset to remove any property
+router.put('/', updateProducts)
+
+// delete by id
 router.delete('/:id', deleteProduct)
 
-router.get("/", async (req, res) => {
-    try {
-        const keyword = req.query.name;
+// delete by any property
+router.delete('/', deleteProducts)
 
-        // Use a regular expression to perform a case-insensitive search
-        /*  const products = await Product.find({ name: keyword }); */
-
-        res.json(keyword);
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal Server Error');
-    }
-});
 
 
 module.exports = router;

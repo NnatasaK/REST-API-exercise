@@ -4,6 +4,27 @@
 <head>
     <title>My Webpage</title>
 </head>
+<style>
+    table,
+    th,
+    td,
+    tr {
+        border-collapse: collapse;
+        border: 1.5px solid rgb(12, 18, 31);
+        padding: 6px;
+    }
+
+    th {
+        background-color: rgba(108, 135, 218, 0.982);
+        color: whitesmoke;
+        font-weight: 300;
+        font-size: larger;
+    }
+
+    h1 {
+        color: rgb(12, 18, 31);
+    }
+</style>
 
 <body>
     <header>
@@ -13,37 +34,43 @@
         </nav>
     </header>
     <main>
-
-
-        <h1>Welcome to my webpage!</h1>
-        <p>This is a template for a basic webpage.</p>
-
-        </p>
-
-        <table class="table table-inverse">
+        <h1>Product List</h1>
+        <table border="1">
             <thead>
                 <tr>
                     <th>Name</th>
-                    <th>Email</th>
-                    <th>Username</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Category</th>
                 </tr>
             </thead>
-
             <tbody>
-                <% for(var i=0; i < productList.length; i++) { %>
+                <% products.forEach(product=> { %>
                     <tr>
                         <td>
-                            <%= productList[i].name %>
+                            <%= product.name %>
                         </td>
-
+                        <td>
+                            <%= product.description %>
+                        </td>
+                        <td>
+                            &pound; <%= product.price %>
+                        </td>
+                        <td>
+                            <%= product.quantity %>
+                        </td>
+                        <td>
+                            <%= product.category %>
+                        </td>
                     </tr>
-                    <% } %>
+                    <% }); %>
             </tbody>
         </table>
     </main>
-    <footer>
-        <p>Copyright ©2021 My Webpage</p>
-    </footer>
+
+
+
 </body>
 
 </html>
