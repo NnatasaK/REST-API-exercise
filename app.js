@@ -56,8 +56,10 @@ app.use(errorMiddleware);
 
 
 
-// Gives only a number of products but not the content ???
-
+// My version -> can only filter either by name or price (keep working on it)
+app.get('/', (req, res) => {
+    res.send({ "message": "Welcome to the DressStore application!" })
+})
 app.get('/keyword', async (req, res) => {
 
     try {
@@ -84,7 +86,10 @@ mongoose.connect(MONGO_URL)
     .then(() => {
         app.listen(PORT, () => {
             console.log(`App running on port ${PORT}`)
+
+
         })
+
         console.log('connected to MongoDB')
     }).catch((error) => {
         console.log(error)
